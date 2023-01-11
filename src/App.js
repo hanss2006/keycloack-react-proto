@@ -7,13 +7,13 @@ import SecuredPage from "./pages/Securedpage";
 function App() {
     return (
         <div>
-                <Nav />
-                <BrowserRouter>
-                    <Routes>
-                        <Route exact path="/" element={<Home />} />
-                        <Route path="/secured" element={<SecuredPage />} />
-                    </Routes>
-                </BrowserRouter>
+             <Nav />
+             <BrowserRouter>
+                 <Routes>
+                     <Route exact path="/" element={<Home />} />
+                     <Route path="/secured" element={<SecuredPage />} />
+                 </Routes>
+             </BrowserRouter>
         </div>
     );
 }
