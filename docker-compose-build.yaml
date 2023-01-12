@@ -15,6 +15,10 @@ services:
       - type: bind
         source: ./keycloak.json
         target: /usr/share/nginx/html/config/keycloak.json
+    environment:
+      REACT_APP_KEYCLOAK_CLIENTID: test
+      REACT_APP_KEYCLOAK_REALM: test
+      REACT_APP_KEYCLOAK_URL: http://localhost:8080
     depends_on:
       - keycloak
   postgres:

@@ -1,21 +1,18 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Nav from "./components/Nav";
-import Home from "./pages/Homepage";
-import SecuredPage from "./pages/Securedpage";
+import React, { useContext } from 'react'
 
-function App() {
-    return (
-        <div>
-             <Nav />
-             <BrowserRouter>
-                 <Routes>
-                     <Route exact path="/" element={<Home />} />
-                     <Route path="/secured" element={<SecuredPage />} />
-                 </Routes>
-             </BrowserRouter>
-        </div>
-    );
+// CONTEXTS
+import { KeycloackContext } from 'KeycloakContext'
+import AppRoutes from 'routes/AppRoutes'
+
+const App = () => {
+  const { keycloackValue, authenticated } = useContext(KeycloackContext)
+
+  return (
+      (keycloackValue && authenticated) &&
+      <div className='app-root'>
+        <AppRoutes />
+      </div>
+  )
 }
 
-export default App;
+export default App

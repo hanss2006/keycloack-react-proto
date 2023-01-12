@@ -1,11 +1,11 @@
-import React from 'react';
-import {createRoot} from "react-dom/client";
-import './index.css';
-import App from './App';
-import UserService from "./services/UserService";
-import HttpService from "./services/HttpService";
+import React from "react";
+import ReactDOM from "react-dom";
+import App from 'App'
+import { KeycloackContextProvider } from "KeycloakContext"
 
-const app = createRoot(document.getElementById('root')).render(<App />)
-
-UserService.initKeycloak(app);
-HttpService.configure();
+ReactDOM.render(
+    <KeycloackContextProvider>
+        <App/>
+    </KeycloackContextProvider>,
+    document.getElementById("root")
+);
