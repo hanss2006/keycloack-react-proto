@@ -18,7 +18,7 @@ services:
     environment:
       REACT_APP_KEYCLOAK_CLIENTID: test
       REACT_APP_KEYCLOAK_REALM: test
-      REACT_APP_KEYCLOAK_URL: http://localhost:8080
+      REACT_APP_KEYCLOAK_URL: http://localhost/auth
     depends_on:
       - keycloak
   postgres:
@@ -30,7 +30,7 @@ services:
       POSTGRES_USER: keycloak
       POSTGRES_PASSWORD: password
   keycloak:
-    # Keycloak 20.0.2
+    # Keycloak 20.0.3
     image: quay.io/keycloak/keycloak:latest
     command: start-dev
     volumes:
@@ -38,14 +38,14 @@ services:
         source: ./realm-export.json
         target: /tmp/realm-export.json
     environment:
-      HOSTNAME-STRICT: false
-      HTTP-RELATIVE-PATH: /auth
-      DB_VENDOR: POSTGRES
-      DB_ADDR: postgres
-      DB_DATABASE: keycloak
-      DB_USER: keycloak
-      DB_SCHEMA: public
-      DB_PASSWORD: password
+      KC_HOSTNAME_STRICT: false
+      KC_HTTP_RELATIVE_PATH: /auth
+      KC_DB: postgres
+      KC_DB_URL_HOST: postgres
+      KC_DB_URL_DATABASE: keycloak
+      KC_DB_SCHEMA: public
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: password
       KEYCLOAK_IMPORT: /tmp/realm-export.json
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
