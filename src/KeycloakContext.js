@@ -10,13 +10,13 @@ const KeycloackContextProvider = (props) => {
     const [ authenticated, setAuthenticated ] = useState(false)
 
     const setKeycloack = () => {
-        const keycloak = Keycloak({
+        const keycloak = new Keycloak({
             // realm: process.env.REACT_APP_KEYCLOAK_REALM,
             // url: process.env.REACT_APP_KEYCLOAK_URL,
             // clientId: process.env.REACT_APP_KEYCLOAK_CLIENTID,
-            realm: "test",
-            url: "http://localhost/auth",
-            clientId: "test",
+            realm: "ocrv-realm",
+            url: "https://kpi.dev.ocrv.com.rzd/auth",
+            clientId: "asokpi-client",
         })
 
         keycloak.init({
